@@ -40,6 +40,7 @@ namespace Skaitmenu_skaiciuokle_ir_eglute
                 button2.BringToFront();
                
             }
+            catch (System.FormatException) { MessageBox.Show("Įvestas ne skaitmuo."); }
             catch (ArgumentOutOfRangeException) { MessageBox.Show("Įveskite dar "+(10-h)+" skaitmenis.");}
 
         }
@@ -47,6 +48,24 @@ namespace Skaitmenu_skaiciuokle_ir_eglute
         private void button2_Click(object sender, EventArgs e)
         {
             h = 0; z = 0; textBox1.Text = ""; textBox2.Text = ""; button2.SendToBack();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            richTextBox1.Text = "";
+            int egDyd = 0;
+            try
+            {
+                egDyd = Convert.ToInt32(textBox3.Text);
+            }
+            catch (System.FormatException) { MessageBox.Show("Įvestas ne skaitmuo arba nieko langelyje nieko neįvesa."); }
+            for (int a=0; a < egDyd+1; a++) { for(int b=0; b<a; b++) { richTextBox1.Text += "* "; } richTextBox1.Text += "\n"; }
+            richTextBox1.SelectAll(); richTextBox1.SelectionAlignment = HorizontalAlignment.Center;
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
